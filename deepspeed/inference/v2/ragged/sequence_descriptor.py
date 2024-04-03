@@ -208,7 +208,7 @@ class DSSequenceDescriptor(BaseSequenceDescriptor):
             cache_group (int): The cache group to query.
         """
         block_ids = []
-        for allocation_group, num_blocks in zip(self._kv_cache_ids[cache_group],
+        for allocation_group, num_blocks in zip(self.kv_cache_ids_shadow[cache_group],
                                                 self._blocks_per_allocation_group[cache_group]):
             block_ids.append(allocation_group[:num_blocks])
         return torch.cat(block_ids)
